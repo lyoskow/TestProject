@@ -1,0 +1,21 @@
+﻿<div class=" form-row" >
+    <div class="col-6" ng-show="user.ID!==undefined">
+        <label>קוד משתמש</label>
+        <input type="text" ng-model="user.ID" disabled />
+    </div>
+    <div class="col-6">
+        <label>שם פרטי</label>
+        <input type="text" ng-model="user.FirstName" maxlength="50" required />
+    </div>
+    <div class="col-6">
+        <label>שם משפחה</label>
+        <input type="text" ng-model="user.LastName" maxlength="50" required />
+    </div>
+    <div ng-show="user.ID==undefined" class="col-6">
+        {{user.ID}}
+        <input type="submit" ng-click="$parent.insertUserDetails()" value="הוספה" />
+    </div>
+    <div ng-show="user.ID!==undefined" class="col-6">
+        <input type="submit" ng-click="$parent.updateUserDetails()" value="עדכון" />
+    </div>
+</div>

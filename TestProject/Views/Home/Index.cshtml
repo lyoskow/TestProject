@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html ng-app="UsersApp" dir="rtl">
+<head>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ניהול משתמשים</title>
+    <link href="~/Styles/css/Users.css" rel="stylesheet" />
+    <link href="~/Styles/css/angular-material.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+
+    <script src="~/scripts/angular.js"></script>
+    <script src="~/scripts/angular-animate.js"></script>
+    <script src="~/scripts/angular-material.js"></script>
+    <script src="~/scripts/angular-route.js"></script>
+
+    <script src="~/scripts/app.js"></script>
+    <script src="~/scripts/Directives/userDetailsDirective.js"></script>
+    <script src="~/scripts/Services/GeneralService.js"></script>
+    <script src="~/scripts/Controllers/UsersCtrl.js"></script>
+
+</head>
+
+<body ng-controller="UsersCtrl">
+    <header>
+        ניהול רשימת משתמשים
+    </header>
+    <div class="row">
+        <div id="tabs-no-directive">
+            <ul class="tabs">
+                <li ng-repeat="l in lstTabs">
+                    <a href="#" ng-click="setSelectes($index+1)" ng-class="{active: selectedTab == ($index+1)}">{{l}}</a>
+                </li>
+            </ul>
+            <div class="panes">
+                <div ng-class="{active: selectedTab == 1}" class="pane active">
+                    <div ng-repeat="u in data">
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label>קוד משתמש</label>
+                                <input type="text" ng-model="u.ID" disabled />
+                            </div>
+                            <div class="col-6">
+                                <label>שם פרטי</label>
+                                <input type="text" ng-model="u.FirstName" disabled />
+                            </div>
+                            <div class="col-6">
+                                <label>שם משפחה</label>
+                                <input type="text" ng-model="u.LastName" disabled />
+                            </div>
+                            <div class="col-6">
+                                <input type="button" ng-click="setSelectes(3);editUserDatils(u)" value="עריכה" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-class="{active: selectedTab == 2}" class="pane">
+                    <form name="frmInsert" novalidate ng-class="{'form-completed' : frmInsert.$error && (frmInsert.$submitted) }">
+                        <user-details user="newUser"></user-details>
+                    </form>
+                </div>
+                <div ng-class="{active: selectedTab == 3}" class="pane">
+                    <form name="frmUpdate" novalidate ng-class="{'form-completed' : frmUpdate.$error && (frmUpdate.$submitted) }">
+                        <div ng-show="updateUser.ID!==undefined">
+                            <user-details user="updateUser"></user-details>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<footer></footer>
+
+
+

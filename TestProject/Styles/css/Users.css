@@ -1,0 +1,60 @@
+﻿body {
+}
+
+ul.tabs {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+ul.tabs li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  margin-left: 5px;
+}
+ul.tabs li a {
+  text-decoration: none;
+  color: white;
+  background-color: #808080;
+  padding: 4px;
+  display: block;  
+}
+ul.tabs li a.active {
+  background-color: indigo;
+}
+div.panes div.pane { 
+  background-color: #f0f0f0;
+  display: none;
+  padding: 12px;
+}
+
+div.panes div.pane.active { 
+  display: block;
+}
+
+#tabs-no-directive, #tabs-with-directive {
+  margin: 20px;
+}
+
+.col-6 {
+    width: 15.9%;
+    float: right;
+    margin-left: 5px;
+}
+
+.form-row {
+    margin-bottom: 3px;
+}
+
+.form-row::before, .form-row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.form-completed input.ng-invalid-required {
+    background-color: #fff2f2 !important;
+    border-color: #ff0000 !important;
+}
+
+
